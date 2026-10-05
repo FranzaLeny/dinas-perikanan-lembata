@@ -43,7 +43,7 @@
     <div class="nav">
 
       <!-- LOGO DINAS -->
-      <img class="logo" src="assets/logo-lembata.webp" alt="Logo Kabupaten Lembata">
+      <img class="logo logo-lembata" src="assets/logo-lembata.webp" alt="Logo Kabupaten Lembata">
 
       <!-- TULISAN -->
       <div class="brand">
@@ -358,6 +358,19 @@
 
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('header');
+    function handleHeaderScroll() {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    handleHeaderScroll();
+  </script>
 
 </body>
 
