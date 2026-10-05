@@ -62,6 +62,10 @@ header.scrolled {
   flex-shrink: 0;
 }
 
+.logo-brand {
+  border-radius: 50%;
+}
+
 .brand {
   display: block;
   flex: 1;
