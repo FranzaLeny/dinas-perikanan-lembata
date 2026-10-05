@@ -42,6 +42,49 @@
     content="Portal informasi resmi layanan nelayan dan pelaku usaha perikanan Dinas Perikanan Kabupaten Lembata: e-KUSUKA dan Rekomendasi Barcode BBM Nelayan.">
   <meta name="twitter:image" content="https://diskan.lembata.site/assets/og-logo.png">
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://diskan.lembata.site">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "GovernmentOrganization",
+        "@id": "https://diskan.lembata.site/#organization",
+        "name": "Dinas Perikanan Kabupaten Lembata - Bidang Perikanan Tangkap",
+        "url": "https://diskan.lembata.site/",
+        "logo": "https://diskan.lembata.site/assets/logo-lembata.webp",
+        "image": "https://diskan.lembata.site/assets/og-logo.png",
+        "telephone": "+6281337731476",
+        "email": "diskan@lembatakab.go.id",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Trans Lembata, Kelurahan Lewoleba Tengah",
+          "addressLocality": "Kecamatan Nubatukan, Kabupaten Lembata",
+          "addressRegion": "Nusa Tenggara Timur",
+          "addressCountry": "ID"
+        }
+      },
+      {
+        "@type": "GovernmentService",
+        "name": "Layanan e-KUSUKA dan Rekomendasi Barcode BBM Nelayan",
+        "provider": {
+          "@id": "https://diskan.lembata.site/#organization"
+        },
+        "serviceType": "Pelayanan Publik Perikanan Tangkap",
+        "areaServed": "Kabupaten Lembata"
+      }
+    ]
+  }
+  </script>
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -77,7 +120,7 @@
       </p>
     </section>
 
-    <section class="section">
+    <section class="section" id="layanan">
       <div class="section-title">
         <h2>Layanan Utama</h2>
         <p>Pilih layanan untuk melihat persyaratan dan alur pelayanan</p>
@@ -213,6 +256,10 @@
             </div>
 
           </div>
+
+          <div class="back-link-wrapper">
+            <a class="back-link" href="#layanan">↑ Kembali ke Pilihan Layanan</a>
+          </div>
         </div>
       </div>
     </section>
@@ -280,6 +327,10 @@
             </div>
 
           </div>
+
+          <div class="back-link-wrapper">
+            <a class="back-link" href="#layanan">↑ Kembali ke Pilihan Layanan</a>
+          </div>
         </div>
       </div>
     </section>
@@ -344,6 +395,10 @@
             </div>
 
           </div>
+
+          <div class="back-link-wrapper">
+            <a class="back-link" href="#layanan">↑ Kembali ke Pilihan Layanan</a>
+          </div>
         </div>
       </div>
     </section>
@@ -375,17 +430,49 @@
     </div>
   </footer>
 
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <button class="back-to-top" id="backToTopBtn" aria-label="Kembali ke atas" title="Kembali ke atas">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </button>
+    <a class="floating-whatsapp" href="https://wa.me/6281337731476?text=Halo%20Dinas%20Perikanan%20Lembata,%20saya%20ingin%20bertanya%20mengenai%20layanan" target="_blank" rel="noopener" aria-label="Tanya Layanan via WhatsApp">
+      <svg viewBox="0 0 24 24">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.78 14.07c-.24.68-1.39 1.3-1.92 1.38-.49.07-1.12.1-3.23-.77-2.69-1.12-4.43-3.83-4.57-4.01-.13-.18-1.1-1.46-1.1-2.79 0-1.33.69-1.98.94-2.25.25-.26.54-.33.72-.33.18 0 .36 0 .52.01.17.01.4.06.61.53.22.49.75 1.83.82 1.96.07.13.12.29.02.47-.09.18-.14.29-.27.45-.14.16-.29.35-.41.47-.14.13-.28.28-.12.56.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.59-.07.16-.18.69-.8.87-1.07.18-.27.37-.22.61-.13.25.09 1.57.74 1.84.87.27.13.45.2.52.31.07.11.07.64-.17 1.32z"/>
+      </svg>
+      <span>Tanya Layanan via WA</span>
+    </a>
+  </div>
+
   <script>
     const header = document.querySelector('header');
-    function handleHeaderScroll() {
-      if (window.scrollY > 10) {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+    function handleScroll() {
+      const scrollPos = window.scrollY || document.documentElement.scrollTop;
+      
+      // Navbar blur effect
+      if (scrollPos > 10) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
+
+      // Back to top button visibility
+      if (scrollPos > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
     }
-    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-    handleHeaderScroll();
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
   </script>
 
 </body>
